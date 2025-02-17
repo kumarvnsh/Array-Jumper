@@ -7,7 +7,7 @@ namespace Player
 PlayerController::PlayerController()  
 {  
 	player_model = new PlayerModel();  
-	player_view = new PlayerView();  
+	player_view = new PlayerView(this);  
         
 	
 									

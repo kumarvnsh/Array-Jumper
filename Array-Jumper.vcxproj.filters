@@ -141,6 +141,9 @@
     <Image Include="assets\textures\quit_button.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="assets\textures\target.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\fonts\bubbleBobble.ttf" />

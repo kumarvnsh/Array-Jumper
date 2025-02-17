@@ -28,6 +28,7 @@ namespace Player
 	void PlayerView::update()
 	{
 		//Yet to implement
+		
 	}
 
 	void PlayerView::render()
