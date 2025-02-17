@@ -23,4 +23,4 @@ namespace Player
 		void setCurrentPosition(int new_position);
 	};
 }
-#pragma once
+

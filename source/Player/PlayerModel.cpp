@@ -1,5 +1,6 @@
 #include "../../header/Player/PlayerModel.h"
 
+
 namespace Player
 {
 	PlayerState PlayerModel::getPlayerState()

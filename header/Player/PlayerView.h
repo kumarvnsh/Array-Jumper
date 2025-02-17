@@ -9,6 +9,7 @@ namespace Player
 	private:
 		sf::RenderWindow* game_window;
 		UI::UIElement::ImageView* player_image;
+		PlayerController* player_controller;
 
 		float player_height;
 		float player_width;
@@ -17,12 +18,23 @@ namespace Player
 		void drawPlayer();
 		void loadPlayer();
 		void calculatePlayerDimensions();
-		void updatePlayerPosition()
-			sf::Vector2f calulcatePlayerPosition();
+		void updatePlayerPosition();
+		sf::Vector2f calculatePlayerPosition();
 
 	public:
-		PlayerView();
-		~PlayerView();
+        
+
+        PlayerView(PlayerController* controller) : player_controller(controller)
+        {
+            game_window = nullptr;
+            player_image = new UI::UIElement::ImageView();
+        }            
+	     
+        PlayerView();
+		
+        ~PlayerView();
+
+		
 
 		void initialize();
 		void update();
