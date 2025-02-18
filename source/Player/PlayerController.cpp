@@ -84,6 +84,9 @@ void PlayerController::move(MovementDirection direction)
 
 	player_model->setCurrentPosition(targetPosition);
 	ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::MOVE);
+
+	int newPosition = getCurrentPosition(); // Assuming this gets the updated position
+	ServiceLocator::getInstance()->getGameplayService()->onPositionChanged(newPosition);
 }
 
 void PlayerController::jump(MovementDirection direction)
@@ -112,6 +115,9 @@ void PlayerController::jump(MovementDirection direction)
 
 	player_model->setCurrentPosition(targetPosition);
 	ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::JUMP);
+
+	int newPosition = getCurrentPosition(); // Assuming this gets the updated position
+	ServiceLocator::getInstance()->getGameplayService()->onPositionChanged(newPosition);
 }
 
 
@@ -131,6 +137,11 @@ void PlayerController::readInput()
 		else
 			move(MovementDirection::BACKWARD);
 	}
+}
+
+void PlayerController::takeDamage()
+{
+	player_model->resetPlayer();
 }
 
 

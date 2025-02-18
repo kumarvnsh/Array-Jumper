@@ -33,5 +33,6 @@ namespace Player
 		void jump(MovementDirection direction);
 		bool isPositionInBound(int targetPosition); // Add this line
 		void readInput();
+		void takeDamage();
 	};
 }
