@@ -30,6 +30,7 @@ namespace Player
 		void setPlayerState(PlayerState new_player_state);
 		int getCurrentPosition();
 		void move(MovementDirection direction);
+		void jump(MovementDirection direction);
 		bool isPositionInBound(int targetPosition); // Add this line
 		void readInput();
 	};
