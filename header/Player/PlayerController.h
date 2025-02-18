@@ -34,5 +34,6 @@ namespace Player
 		bool isPositionInBound(int targetPosition); // Add this line
 		void readInput();
 		void takeDamage();
+		void reset();
 	};
 }

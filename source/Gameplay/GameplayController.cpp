@@ -4,6 +4,7 @@
 #include "../../header/Player/PlayerService.h"
 #include "../../header/Sound/SoundService.h"
 #include "../../header/Level/LevelService.h"
+#include "../../header/Main/GameService.h"
 
 namespace Gameplay
 {
@@ -15,12 +16,26 @@ namespace Gameplay
 	void GameplayController::render() {}
 	void GameplayController::destroy() {}
 
+	bool GameplayController::isEndBlock(Level::BlockType value)
+	{
+		return value == Level::BlockType::TARGET;
+	}
+
+	void GameplayController::processEndBlock()
+	{
+		Global::ServiceLocator::getInstance()->getPlayerService()->levelComplete();
+		Global::ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::LEVEL_COMPLETE);
+		Main::GameService::setGameState(Main::GameState::CREDITS);
+	}
+
 	void GameplayController::onPositionChanged(int position)
 	{
 		Level::BlockType value = Global::ServiceLocator::getInstance()->getLevelService()->getCurrentBoxValue(position);
 
 		if (isObstacle(value))
 			processObstacle();
+		if (isEndBlock(value))
+			processEndBlock();
 	}
 
 	void GameplayController::processObstacle()

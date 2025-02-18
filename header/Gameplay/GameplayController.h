@@ -12,6 +12,8 @@ namespace Gameplay
 		void initialize();
 		void update();
 		void render();
+		bool isEndBlock(Level::BlockType value);
+		void processEndBlock();
 		void onPositionChanged(int position);
 		void processObstacle();
 		bool isObstacle(Level::BlockType value);

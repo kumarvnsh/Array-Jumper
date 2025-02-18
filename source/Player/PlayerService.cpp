@@ -27,5 +27,10 @@ namespace Player
 		player_controller->takeDamage();
 	}
 
+	void PlayerService::levelComplete()
+	{
+		player_controller->reset();
+	}
+
 	void PlayerService::destroy() { delete(player_controller); }
 }

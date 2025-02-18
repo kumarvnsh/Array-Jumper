@@ -144,6 +144,11 @@ void PlayerController::takeDamage()
 	player_model->resetPlayer();
 }
 
+void PlayerController::reset() // Add this method
+{
+	player_model->resetPlayer();
+}
+
 
 void PlayerController::destroy()  
 {  
