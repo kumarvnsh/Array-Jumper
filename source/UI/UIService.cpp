@@ -3,7 +3,6 @@
 #include "../../header/Main/GameService.h"
 #include "../../header/Global/ServiceLocator.h"
 #include "../../header/UI/UIElement/TextView.h"
-#include "../../header/UI/Gameplay/GameplayUIController.h" 
 
 
 
@@ -13,10 +12,10 @@ namespace UI
     using namespace SplashScreen;
     using namespace MainMenu;
     using namespace Credits;
+    using namespace GameplayUI;
     using namespace Instructions;
     using namespace Global;
     using namespace UIElement;
-    using namespace GameplayUI;
 
     UIService::UIService()
     {
@@ -80,7 +79,7 @@ namespace UI
             credits_screen_ui_controller->update();
             break;
         case GameState::GAMEPLAY:
-            gameplay_ui_controller->update(); // Update the controller
+            gameplay_ui_controller->update();
             break;
         }
     }
@@ -102,7 +101,7 @@ namespace UI
             credits_screen_ui_controller->render();
             break;
         case GameState::GAMEPLAY:
-            gameplay_ui_controller->render(); // Render the controller
+            gameplay_ui_controller->render();
             break;
         }
     }

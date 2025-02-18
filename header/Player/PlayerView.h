@@ -1,6 +1,7 @@
 #pragma once
-#include "../../header/UI/UIElement/ImageView.h"
 #include "../../header/Level/LevelModel.h"
+#include "../../header/UI/UIElement/ImageView.h"
+
 
 namespace Player
 {
@@ -9,8 +10,8 @@ namespace Player
 	{
 	private:
 		sf::RenderWindow* game_window;
-		UI::UIElement::ImageView* player_image;
 		PlayerController* player_controller;
+		UI::UIElement::ImageView* player_image;
 
 		float player_height;
 		float player_width;
@@ -21,19 +22,15 @@ namespace Player
 		void loadPlayer();
 		void calculatePlayerDimensions();
 		void updatePlayerPosition();
-		sf::Vector2f calculatePlayerPosition();
+		sf::Vector2f calulcatePlayerPosition();
 
 	public:
-        
-
 		PlayerView(PlayerController* controller);
-
-        ~PlayerView();
-
-		
+		~PlayerView();
 
 		void initialize();
 		void update();
 		void render();
+
 	};
 }

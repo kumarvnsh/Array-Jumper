@@ -1,22 +1,28 @@
 #pragma once
+#include "../../header/Event/EventService.h"
 #include "MovementDirection.h"
-#include "../Event/EventService.h"
 
 namespace Player
 {
-
 	class PlayerView;
 	class PlayerModel;
-	
 	enum class PlayerState;
+
 	class PlayerController
 	{
 	private:
 		PlayerModel* player_model;
 		PlayerView* player_view;
+
 		Event::EventService* event_service;
 
 		void destroy();
+
+		void readInput();
+		void move(MovementDirection direction);
+		void jump(MovementDirection direction);
+		bool isPositionInBound(int targetPosition);
+		void onDeath();
 
 	public:
 		PlayerController();
@@ -28,14 +34,11 @@ namespace Player
 
 		PlayerState getPlayerState();
 		void setPlayerState(PlayerState new_player_state);
+
 		int getCurrentPosition();
-		void move(MovementDirection direction);
-		void jump(MovementDirection direction);
-		bool isPositionInBound(int targetPosition); // Add this line
-		void readInput();
+		int getCurrentLives();
+
+		void resetPlayer();
 		void takeDamage();
-		void reset();
-		int getCurrentLives() const;
-		void onDeath();
 	};
 }

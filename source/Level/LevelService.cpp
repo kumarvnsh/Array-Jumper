@@ -30,14 +30,30 @@ namespace Level
 		return level_controller->getBoxDimensions();
 	}
 
-	BlockType LevelService::getCurrentBoxValue(int position)
+	BlockType LevelService::getCurrentBoxValue(int currentPosition)
 	{
-		// Add logic to get the current box value based on the position
-		// This is a placeholder implementation
-		return level_controller->getCurrentBoxValue(position);
+		return level_controller->getCurrentBoxValue(currentPosition);
 	}
 
-	
+	bool LevelService::isLastLevel()
+	{
+		return level_controller->isLastLevel();
+	}
+
+	void LevelService::loadNextLevel()
+	{
+		level_controller->loadNextLevel();
+	}
+
+	int LevelService::getCurrentLevelNumber()
+	{
+		return level_controller->getCurrentLevelNumber();
+	}
+
+	void LevelService::resetLevels()
+	{
+		level_controller->reset();
+	}
 
 	void LevelService::destroy()
 	{

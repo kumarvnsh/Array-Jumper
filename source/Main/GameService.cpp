@@ -30,7 +30,7 @@ namespace Main
 		game_window = service_locator->getGraphicService()->getGameWindow();
 	}
 
-	void GameService::showSplashScreen() 
+	void GameService::showSplashScreen()
 	{
 		setGameState(GameState::SPLASH_SCREEN);
 		service_locator->getUIService()->showSplashScreen();

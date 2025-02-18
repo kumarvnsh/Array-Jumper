@@ -1,24 +1,30 @@
 #pragma once
-#include "../../header/Level/LevelData.h"
+#include "../../header/Level/BlockType.h"
 
 namespace Gameplay
 {
 	class GameplayController
 	{
-	public:
-		GameplayController();
-		~GameplayController();
+	private:
 
-		void initialize();
+		bool isObstacle(Level::BlockType value);
+		bool isEndBlock(Level::BlockType value);
+		void processObstacle();
+		void processEndBlock();
+
+		bool isLastLevel();
+		void loadNextLevel();
+		void gameWon();
+		void gameOver();
+
+	public:
+
+		void intialize();
 		void update();
 		void render();
-		bool isEndBlock(Level::BlockType value);
-		void processEndBlock();
+
+		void startGame();
 		void onPositionChanged(int position);
-		void processObstacle();
-		bool isObstacle(Level::BlockType value);
-		void gameOver();
 		void onDeath();
-		void destroy();
 	};
 }
