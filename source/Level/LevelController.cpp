@@ -8,7 +8,7 @@ namespace Level
 	LevelController::LevelController()
 	{
 		level_view = new LevelView(this);
-		//level_model = new LevelModel();
+		level_model = new LevelModel();
 	}
 
 	LevelController::~LevelController() {}
@@ -26,5 +26,10 @@ namespace Level
 	void LevelController::render()
 	{
 		level_view->render();
+	}
+
+	BlockType LevelController::getCurrentBoxValue(int currentPosition)
+	{
+		return level_model->getCurrentBoxValue(currentPosition);
 	}
 }
