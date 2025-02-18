@@ -6,15 +6,22 @@
 #include <iostream>
 #include "../../header/Global/Config.h" //-------------Needed for Config
 
-using namespace Global; //-------------Needed for Config
+
+
+
+
 
 namespace Player
 {
-	PlayerView::PlayerView()
-	{
-		game_window = nullptr;
+	using namespace Global; //-------------Needed for Config
+	using namespace UI::UIElement; //-------------Needed for ImageView
+	using namespace Level; //-------------Needed for BoxDimensions
 
-		player_image = new UI::UIElement::ImageView(); // Fully qualify the ImageView identifier
+	PlayerView::PlayerView(PlayerController* controller)
+	{
+		player_controller = controller;
+		player_image = new ImageView();
+		game_window = nullptr;
 	}
 
 	PlayerView::~PlayerView() {}
@@ -27,8 +34,7 @@ namespace Player
 
 	void PlayerView::update()
 	{
-		//Yet to implement
-		
+		updatePlayerPosition();
 	}
 
 	void PlayerView::render()
@@ -38,15 +44,15 @@ namespace Player
 		case PlayerState::ALIVE:
 			drawPlayer();
 			break;
-		default:
-			break;
+		
 		}
 	}
 
 	void PlayerView::calculatePlayerDimensions()
 	{
-		player_height = 1000.f;
-		player_width = 1000.f;
+		current_box_dimensions = ServiceLocator::getInstance()->getLevelService()->getBoxDimensions();
+		player_height = current_box_dimensions.box_height;
+		player_width = current_box_dimensions.box_width;
 	}
 
 	void PlayerView::initializePlayerImage()
@@ -63,15 +69,18 @@ namespace Player
 		initializePlayerImage();
 	}
 
-	sf::Vector2f calulcatePlayerPosition()
+	sf::Vector2f PlayerView::calculatePlayerPosition()
 	{
-		return sf::Vector2f(0, 0);
+		float xPosition = current_box_dimensions.box_spacing + static_cast<float>(player_controller->getCurrentPosition()) * (current_box_dimensions.box_width + current_box_dimensions.box_spacing);
+		float yPosition = static_cast<float>(game_window->getSize().y) - current_box_dimensions.box_height - current_box_dimensions.bottom_offset - player_height;
+		return sf::Vector2f(xPosition, yPosition);
 	}
 
 	void PlayerView::updatePlayerPosition()
 	{
-		player_image->setPosition(calulcatePlayerPosition());
+		player_image->setPosition(calculatePlayerPosition());
 	}
+
 
 	void PlayerView::drawPlayer()
 	{

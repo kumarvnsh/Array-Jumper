@@ -20,6 +20,7 @@ void PlayerController::initialize()
 {  
 	
 	player_view->initialize();  
+	
 }  
 
 void PlayerController::update()  
@@ -41,6 +42,11 @@ void PlayerController::setPlayerState(PlayerState new_player_state)
 {  
 	player_model->setPlayerState(new_player_state);  
 }  
+
+int PlayerController::getCurrentPosition()
+{
+	return player_model->getCurrentPosition();
+}
 
 void PlayerController::destroy()  
 {  

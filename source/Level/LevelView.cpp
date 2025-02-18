@@ -179,5 +179,10 @@ namespace Level
 		float yPosition = static_cast<float>(game_window->getSize().y) - box_dimensions.box_height - box_dimensions.bottom_offset;
 		return sf::Vector2f(xPosition, yPosition);
 	}
+
+	BoxDimensions LevelView::getBoxDimensions()
+	{
+		return box_dimensions;
+	}
 	
 }
