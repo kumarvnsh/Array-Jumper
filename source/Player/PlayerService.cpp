@@ -32,5 +32,10 @@ namespace Player
 		player_controller->reset();
 	}
 
+	int PlayerService::getCurrentLives() const
+	{
+		return player_controller->getCurrentLives();
+	}
+
 	void PlayerService::destroy() { delete(player_controller); }
 }

@@ -17,6 +17,8 @@ namespace Gameplay
 		void onPositionChanged(int position);
 		void processObstacle();
 		bool isObstacle(Level::BlockType value);
+		void gameOver();
+		void onDeath();
 		void destroy();
 	};
 }

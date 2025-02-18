@@ -1,6 +1,8 @@
 #include "../../header/Player/PlayerModel.h"
 
 
+
+
 namespace Player
 {
 
@@ -9,6 +11,7 @@ namespace Player
 		// Initialize player state and position
 		player_state = PlayerState::ALIVE;
 		current_position = 0;
+		current_lives = max_lives;
 	}
 
 	PlayerState PlayerModel::getPlayerState()
@@ -35,5 +38,21 @@ namespace Player
 	{
 		current_position = 0;
 		player_state = PlayerState::ALIVE;
+		current_lives = max_lives;
+	}
+
+	void PlayerModel::decrementLife()
+	{
+		current_lives--;
+	}
+
+	int PlayerModel::getCurrentLives() const
+	{
+		return current_lives;
+	}
+
+	void PlayerModel::resetPosition()
+	{
+		current_position = 0;
 	}
 }

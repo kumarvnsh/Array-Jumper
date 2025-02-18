@@ -141,12 +141,27 @@ void PlayerController::readInput()
 
 void PlayerController::takeDamage()
 {
-	player_model->resetPlayer();
+	player_model->decrementLife();
+	if (player_model->getCurrentLives() <= 0)
+		onDeath();
+	else
+		player_model->resetPosition();
 }
 
 void PlayerController::reset() // Add this method
 {
 	player_model->resetPlayer();
+}
+
+void PlayerController::onDeath()
+{
+	ServiceLocator::getInstance()->getGameplayService()->onDeath();
+	player_model->resetPlayer();
+}
+
+int PlayerController::getCurrentLives() const
+{
+	return player_model->getCurrentLives();
 }
 
 
